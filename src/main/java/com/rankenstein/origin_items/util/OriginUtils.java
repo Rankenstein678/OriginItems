@@ -10,4 +10,9 @@ public class OriginUtils {
         return Origin.get(player).get(OriginLayers.
                 getLayer(new Identifier("origins", "origin"))).getIdentifier();
     }
+
+    public static boolean isOfOrigin(PlayerEntity player, String origin) {
+        return Origin.get(player).get(OriginLayers.getLayer(Constants.ORIGIN_LAYER))
+                .getIdentifier().toString().equals(origin);
+    }
 }

@@ -1,5 +1,7 @@
 package com.rankenstein.origin_items.items.custom;
 
+import com.rankenstein.origin_items.util.Constants;
+import com.rankenstein.origin_items.util.OriginUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.EntityHitResult;
@@ -27,18 +30,25 @@ public class ShulkerCannonItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        if (!OriginUtils.isOfOrigin(user, Constants.SHULK)) {
+            if (world.isClient()) {
+                user.playSound(SoundEvents.BLOCK_DISPENSER_FAIL, SoundCategory.PLAYERS, 1.0f, 1.0f);
+            }
+            user.sendMessage(Text.translatable("origin_items.wrong_origin"), true);
+            return TypedActionResult.fail(user.getStackInHand(hand));
+        }
+
         if (hand == Hand.MAIN_HAND) {
             if (raycast(user) != null && raycast(user).getEntity() instanceof LivingEntity) {
                 Entity target = raycast(user).getEntity();
                 if (!world.isClient) {
                     world.spawnEntity(new ShulkerBulletEntity(world, user, target, null));
 
-                    user.playSound(SoundEvents.ENTITY_SHULKER_SHOOT, SoundCategory.PLAYERS, 2.0f,
-                            world.getRandom().nextFloat() - world.getRandom().nextFloat() * 0.2f + 1.0f);
+                    user.playSound(SoundEvents.ENTITY_SHULKER_SHOOT, SoundCategory.PLAYERS, 2.0f, world.getRandom().nextFloat() - world.getRandom().nextFloat() * 0.2f + 1.0f);
                     user.getItemCooldownManager().set(this, COOLDOWN_HIT);
                 }
             } else {
-                if(world.isClient) {
+                if (world.isClient) {
                     user.playSound(SoundEvents.BLOCK_DISPENSER_FAIL, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 }
                 user.getItemCooldownManager().set(this, COOLDOWN_MISS);
@@ -47,7 +57,6 @@ public class ShulkerCannonItem extends Item {
         return super.use(world, user, hand);
     }
 
-    //DANKE ORIGINS MOD!!!
     public static EntityHitResult raycast(Entity source) {
 
         Vec3d origin = new Vec3d(source.getX(), source.getEyeY(), source.getZ());
@@ -56,8 +65,7 @@ public class ShulkerCannonItem extends Item {
 
         Vec3d ray = target.subtract(origin);
         Box box = source.getBoundingBox().stretch(ray).expand(1.0D, 1.0D, 1.0D);
-        return ProjectileUtil.
-                raycast(source, origin, target, box, (entityx) -> !entityx.isSpectator(), ray.lengthSquared());
+        return ProjectileUtil.raycast(source, origin, target, box, (entityx) -> !entityx.isSpectator(), ray.lengthSquared());
     }
 
 }
