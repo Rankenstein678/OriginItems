@@ -26,6 +26,7 @@
       "com.rankenstein.origin_items.datagen.ModDataGeneration"
     ]
   },
+  "accessWidener": "origin_items.accesswidener",
   "mixins": [
     "origin_items.mixins.json"
   ],

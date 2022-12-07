@@ -1,9 +1,6 @@
 package com.rankenstein.origin_items.items;
 
-import com.rankenstein.origin_items.items.custom.BlazingMolotovItem;
-import com.rankenstein.origin_items.items.custom.CraftingItem;
-import com.rankenstein.origin_items.items.custom.DebugItem;
-import com.rankenstein.origin_items.items.custom.ShulkerCannonItem;
+import com.rankenstein.origin_items.items.custom.*;
 import com.rankenstein.origin_items.util.Constants;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
@@ -42,6 +39,8 @@ public class ModItems {
 
     public static final Item BLAZING_MOLOTOV_ITEM = registerItem("blazing_molotov_item",
             new BlazingMolotovItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+    public static final Item PLACEHOLDER_AIR_CROSSBOW = registerItem("placeholder_name",
+            new PlaceholderCrossbowitem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Constants.MOD_ID, name), item);

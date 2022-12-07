@@ -71,6 +71,7 @@ loom {
             runDir "build/datagen"
         }
     }
+    accessWidenerPath = file("src/main/resources/origin_items.accesswidener")
 }
 
 sourceSets { main { resources { srcDirs += dataOutput } } }
