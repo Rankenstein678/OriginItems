@@ -39,11 +39,11 @@ public class ShulkerCannonItem extends Item {
         }
 
         if (hand == Hand.MAIN_HAND) {
-            if (raycast(user) != null && raycast(user).getEntity() instanceof LivingEntity) {
-                Entity target = raycast(user).getEntity();
+            EntityHitResult hit = raycast(user);
+            if (hit != null && hit.getEntity() instanceof LivingEntity) {
+                Entity target = hit.getEntity();
                 if (!world.isClient) {
                     world.spawnEntity(new ShulkerBulletEntity(world, user, target, null));
-
                     user.playSound(SoundEvents.ENTITY_SHULKER_SHOOT, SoundCategory.PLAYERS, 2.0f, world.getRandom().nextFloat() - world.getRandom().nextFloat() * 0.2f + 1.0f);
                     user.getItemCooldownManager().set(this, COOLDOWN_HIT);
                 }
