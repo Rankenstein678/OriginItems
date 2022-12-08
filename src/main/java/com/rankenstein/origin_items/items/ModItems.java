@@ -39,8 +39,8 @@ public class ModItems {
 
     public static final Item BLAZING_MOLOTOV_ITEM = registerItem("blazing_molotov_item",
             new BlazingMolotovItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
-    public static final Item PLACEHOLDER_AIR_CROSSBOW = registerItem("placeholder_name",
-            new PlaceholderCrossbowitem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+    public static final Item WING_PIERCER = registerItem("wing_piercer",
+            new WingPiercerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Constants.MOD_ID, name), item);

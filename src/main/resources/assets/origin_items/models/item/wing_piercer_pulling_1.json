@@ -1,0 +1,6 @@
+{
+    "parent": "origin_items:item/wing_piercer",
+    "textures": {
+        "layer0": "origin_items:item/wing_piercer_pulling_1"
+    }
+}

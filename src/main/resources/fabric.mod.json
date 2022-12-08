@@ -36,6 +36,7 @@
     "fabric-api": "*",
     "minecraft": "~1.19",
     "origins": ">=1.7.1",
+    "tooltipfix": "*",
     "java": ">=17"
   },
   "suggests": {

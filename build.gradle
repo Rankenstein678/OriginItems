@@ -7,6 +7,17 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
     maven {
         name = "Ladysnake Libs"
         url = 'https://ladysnake.jfrog.io/artifactory/mods'
@@ -46,6 +57,9 @@ dependencies {
     modImplementation include(fabricApi.module("fabric-transitive-access-wideners-v1", project.fabric_version))
 
     modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+
+    include "maven.modrinth:tooltipfix:1.1.0-1.19"
+    modImplementation "maven.modrinth:tooltipfix:1.1.0-1.19"
 }
 
 processResources {

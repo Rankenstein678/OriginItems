@@ -4,6 +4,8 @@
   "package": "com.rankenstein.origin_items.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "CrossbowRendererMixin",
+    "HeldItemRendererMixin"
   ],
   "client": [
   ],
