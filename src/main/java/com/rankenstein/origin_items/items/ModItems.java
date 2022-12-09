@@ -40,7 +40,10 @@ public class ModItems {
     public static final Item BLAZING_MOLOTOV_ITEM = registerItem("blazing_molotov_item",
             new BlazingMolotovItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item WING_PIERCER = registerItem("wing_piercer",
-            new WingPiercerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new WingPiercerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(465)));
+
+    public static final Item ARROW_BREAKER = registerItem("arrow_breaker",
+            new ArrowBreakerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(4)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Constants.MOD_ID, name), item);
