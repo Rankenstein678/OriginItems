@@ -51,7 +51,7 @@ public abstract class EnderReflexesMixin extends Entity {
             return false;
         }
         double d = thisObj.getX() + (this.random.nextDouble() - 0.5) * RANGE;
-        double e = thisObj.getY() + (double) (this.random.nextInt(64) - 32);
+        double e = thisObj.getY() + (double) (this.random.nextInt(3) * this.random.nextInt(1) > 0 ? -1 : 1);
         double f = thisObj.getZ() + (this.random.nextDouble() - 0.5) * RANGE;
         return this.teleportTo(d, e, f);
     }

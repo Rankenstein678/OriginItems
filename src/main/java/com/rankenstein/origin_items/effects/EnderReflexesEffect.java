@@ -1,4 +1,4 @@
-package com.rankenstein.origin_items.entities;
+package com.rankenstein.origin_items.effects;
 
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;

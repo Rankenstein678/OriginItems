@@ -19,7 +19,6 @@ public class CraftingItem extends Item {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (entity instanceof PlayerEntity player && !world.isClient) {
             Item item;
-
             switch (OriginUtils.getOriginId(player).toString()) {
                 case Constants.ENDERIAN -> item = ModItems.CRAFTING_ITEM_ENDERIAN;
                 case Constants.MERLING -> item = ModItems.CRAFTING_ITEM_MERLING;
