@@ -12,10 +12,6 @@ public class ModItems {
 
     public static final Item DEBUG_ITEM = registerItem("debug_item",
             new DebugItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
-
-    public static final Item SHULKER_CANNON = registerItem("shulker_cannon",
-            new ShulkerCannonItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
-
     public static final Item CRAFTING_ITEM = registerItem("crafting_item",
             new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_ENDERIAN = registerItem("crafting_item_enderian",
@@ -37,6 +33,8 @@ public class ModItems {
     public static final Item CRAFTING_ITEM_FELINE = registerItem("crafting_item_feline",
             new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
 
+    public static final Item SHULKER_CANNON = registerItem("shulker_cannon",
+            new ShulkerCannonItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1)));
     public static final Item BLAZING_MOLOTOV_ITEM = registerItem("blazing_molotov_item",
             new BlazingMolotovItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item WING_PIERCER = registerItem("wing_piercer",
@@ -44,6 +42,8 @@ public class ModItems {
 
     public static final Item ARROW_BREAKER = registerItem("arrow_breaker",
             new ArrowBreakerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(4)));
+    public static final Item AIR_SIGILL = registerItem("air_sigill",
+            new AirSigillItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(6000)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Constants.MOD_ID, name), item);

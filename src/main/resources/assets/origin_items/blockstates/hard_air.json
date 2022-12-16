@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "origin_items:block/hard_air"
+    },
+    "age=1": {
+      "model": "origin_items:block/hard_air_1"
+    },
+    "age=2": {
+      "model": "origin_items:block/hard_air_2"
+    },
+    "age=3": {
+      "model": "origin_items:block/hard_air_3"
+    }
+  }
+}
