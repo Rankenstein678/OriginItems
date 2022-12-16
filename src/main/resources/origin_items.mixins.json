@@ -4,11 +4,11 @@
   "package": "com.rankenstein.origin_items.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "CrossbowRendererMixin",
-    "EnderReflexesMixin",
-    "HeldItemRendererMixin"
+    "EnderReflexesMixin"
   ],
   "client": [
+    "CrossbowRendererMixin",
+    "HeldItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
