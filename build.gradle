@@ -60,6 +60,8 @@ dependencies {
 
     include "maven.modrinth:tooltipfix:1.1.0-1.19"
     modImplementation "maven.modrinth:tooltipfix:1.1.0-1.19"
+
+    modImplementation "maven.modrinth:spark:1.10.17-fabric"
 }
 
 processResources {
@@ -71,24 +73,30 @@ processResources {
     }
 }
 
-def dataOutput = 'src/main/generated'
-
 loom {
     runs {
-        datagen {
-            server()
-
+        // This adds a new gradle task that runs the datagen API: "gradlew runDatagenClient"
+        datagenClient {
+            inherit client
             name "Data Generation"
             vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file(dataOutput)}"
-
+            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+            vmArg "-Dfabric-api.datagen.modid=${modid}"
             runDir "build/datagen"
         }
     }
     accessWidenerPath = file("src/main/resources/origin_items.accesswidener")
 }
-
-sourceSets { main { resources { srcDirs += dataOutput } } }
+// Add the datagenned files into the jar.
+sourceSets {
+    main {
+        resources {
+            srcDirs += [
+                    'src/main/generated'
+            ]
+        }
+    }
+}
 
 def targetJavaVersion = 17
 tasks.withType(JavaCompile).configureEach {
