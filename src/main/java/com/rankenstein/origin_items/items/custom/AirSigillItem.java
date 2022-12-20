@@ -1,6 +1,8 @@
 package com.rankenstein.origin_items.items.custom;
 
 import com.rankenstein.origin_items.effects.ModEffects;
+import com.rankenstein.origin_items.util.Constants;
+import com.rankenstein.origin_items.util.OriginUtils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -26,6 +28,9 @@ public class AirSigillItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        if (!OriginUtils.checkOrigin(Constants.AVIAN, world, user)) {
+            return TypedActionResult.fail(user.getStackInHand(hand));
+        }
         ItemStack stack = user.getStackInHand(hand);
         if (!stack.hasNbt()) {
             stack.setNbt(new NbtCompound());

@@ -36,7 +36,6 @@ public class AirWalkingEffect extends StatusEffect {
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        // In our case, we just make it return true so that it applies the status effect every tick.
         return true;
     }
 }

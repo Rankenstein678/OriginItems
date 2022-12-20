@@ -18,7 +18,9 @@ public class ArrowBreakerItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (!OriginUtils.isOfOrigin(user, Constants.ENDERIAN)) return TypedActionResult.fail(user.getStackInHand(hand));
+        if (!OriginUtils.checkOrigin(Constants.ENDERIAN, world, user)) {
+            return TypedActionResult.fail(user.getStackInHand(hand));
+        }
         user.addStatusEffect(new StatusEffectInstance(ModEffects.ENDER_REFLEXES, 2400, 1));
         user.getStackInHand(hand).damage(1, user, e -> e.sendToolBreakStatus(hand));
         return TypedActionResult.success(user.getStackInHand(hand));

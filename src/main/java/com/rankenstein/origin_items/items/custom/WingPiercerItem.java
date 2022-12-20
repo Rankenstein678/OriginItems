@@ -51,7 +51,7 @@ public class WingPiercerItem extends CrossbowItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (!OriginUtils.isOfOrigin(user, Constants.ELYTRIAN)) {
+        if (!OriginUtils.checkOrigin(Constants.ELYTRIAN, world, user)) {
             return TypedActionResult.fail(user.getStackInHand(hand));
         }
 

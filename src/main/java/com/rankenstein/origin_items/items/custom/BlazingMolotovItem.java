@@ -11,9 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.PotionEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -37,11 +35,7 @@ public class BlazingMolotovItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (!OriginUtils.isOfOrigin(user, Constants.BLAZEBORN)) {
-            if (world.isClient()) {
-                user.playSound(SoundEvents.BLOCK_DISPENSER_FAIL, SoundCategory.PLAYERS, 1.0f, 1.0f);
-            }
-            user.sendMessage(Text.translatable("origin_items.wrong_origin"), true);
+        if (!OriginUtils.checkOrigin(Constants.BLAZEBORN, world, user)) {
             return TypedActionResult.fail(user.getStackInHand(hand));
         }
 

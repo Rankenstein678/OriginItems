@@ -27,5 +27,4 @@ public class ModDataGeneration implements DataGeneratorEntrypoint {
         public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         }
     }
-
 }
