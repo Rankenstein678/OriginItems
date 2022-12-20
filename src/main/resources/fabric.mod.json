@@ -37,6 +37,7 @@
     "minecraft": "~1.19",
     "origins": ">=1.7.1",
     "tooltipfix": "*",
+    "geckolib3": "3.1.38",
     "java": ">=17"
   },
   "suggests": {

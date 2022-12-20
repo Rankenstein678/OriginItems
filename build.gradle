@@ -43,6 +43,7 @@ repositories {
     maven {
         url "https://maven.terraformersmc.com/"
     }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 }
 
 dependencies {
@@ -61,7 +62,7 @@ dependencies {
     include "maven.modrinth:tooltipfix:1.1.0-1.19"
     modImplementation "maven.modrinth:tooltipfix:1.1.0-1.19"
 
-    modImplementation "maven.modrinth:spark:1.10.17-fabric"
+    modImplementation 'software.bernie.geckolib:geckolib-fabric-1.19:3.1.38'
 }
 
 processResources {

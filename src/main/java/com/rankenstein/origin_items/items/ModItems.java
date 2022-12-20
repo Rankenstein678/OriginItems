@@ -3,6 +3,7 @@ package com.rankenstein.origin_items.items;
 import com.rankenstein.origin_items.items.custom.*;
 import com.rankenstein.origin_items.util.Constants;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -44,7 +45,8 @@ public class ModItems {
             new ArrowBreakerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(4)));
     public static final Item AIR_SIGILL = registerItem("air_sigill",
             new AirSigillItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(6000)));
-
+    public static final Item EARS = registerItem("ears",
+            new EarItem(new EarArmorMaterial(), EquipmentSlot.HEAD, new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxDamage(25).maxCount(1)));
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Constants.MOD_ID, name), item);
     }
