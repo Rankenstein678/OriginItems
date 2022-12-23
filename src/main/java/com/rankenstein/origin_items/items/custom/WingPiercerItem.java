@@ -73,7 +73,7 @@ public class WingPiercerItem extends CrossbowItem {
     }
 
     public static PersistentProjectileEntity createArrow(World world, ItemStack stack, LivingEntity shooter) {
-        PlayerSpeedBasedArrow arrowEntity = new PlayerSpeedBasedArrow(world, shooter);
+        PlayerSpeedBasedArrow arrowEntity = new PlayerSpeedBasedArrow(world, shooter,shooter.getVelocity().length());
         arrowEntity.initFromStack(stack);
         return arrowEntity;
     }

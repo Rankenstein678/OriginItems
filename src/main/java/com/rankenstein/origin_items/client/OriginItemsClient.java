@@ -1,9 +1,9 @@
 package com.rankenstein.origin_items.client;
 
 import com.rankenstein.origin_items.blocks.ModBlocks;
+import com.rankenstein.origin_items.client.render.armor.TestArmorRenderer;
 import com.rankenstein.origin_items.items.ModItems;
 import com.rankenstein.origin_items.items.custom.WingPiercerItem;
-import com.rankenstein.origin_items.client.render.armor.TestArmorRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

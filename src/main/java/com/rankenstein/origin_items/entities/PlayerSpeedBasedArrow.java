@@ -17,32 +17,26 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class PlayerSpeedBasedArrow extends ArrowEntity {
-    private static final int VELOCITY_MULTIPLIER = 12;
-    private static final double MINIMAL_DAMAGE_THRESHOLD = 1.5;
+    private static final int DMG_MULT = 5;
+    private final double playerSpeed;
 
-    public PlayerSpeedBasedArrow(World world, LivingEntity owner) {
+    public PlayerSpeedBasedArrow(World world, LivingEntity owner, double playerSpeed) {
         super(world, owner);
+        this.playerSpeed = playerSpeed;
     }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         DamageSource damageSource;
         Entity entity2;
-        super.onEntityHit(entityHitResult);
         Entity target = entityHitResult.getEntity();
         int damage;
-        if (getOwner() instanceof PlayerEntity player) {
-            damage = MathHelper.ceil(player.getVelocity().length() * VELOCITY_MULTIPLIER);
-            if(player.getVelocity().length()< MINIMAL_DAMAGE_THRESHOLD) {
-                damage = 1;
-            }
+        if ((getOwner() instanceof PlayerEntity)) {
+            damage = (int) Math.round(playerSpeed * DMG_MULT * getVelocity().length());
+
         } else {
             float f = (float) this.getVelocity().length();
             damage = MathHelper.ceil(MathHelper.clamp((double) f * 2.0, 0.0, 2.147483647E9));
-        }
-        if (this.isCritical()) {
-            long l = this.random.nextInt(damage / 2 + 2);
-            damage = (int) Math.min(l + (long) damage, Integer.MAX_VALUE);
         }
         if ((entity2 = this.getOwner()) == null) {
             damageSource = DamageSource.arrow(this, this);

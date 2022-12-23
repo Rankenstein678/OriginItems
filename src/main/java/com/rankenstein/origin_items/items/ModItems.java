@@ -46,7 +46,8 @@ public class ModItems {
     public static final Item AIR_SIGILL = registerItem("air_sigill",
             new AirSigillItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(6000)));
     public static final Item EARS = registerItem("ears",
-            new EarItem(new EarArmorMaterial(), EquipmentSlot.HEAD, new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxDamage(25).maxCount(1)));
+            new EarItem(new EarArmorMaterial(), EquipmentSlot.HEAD, new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(25)));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Constants.MOD_ID, name), item);
     }
