@@ -1,4 +1,10 @@
-// 1.19.2	2022-12-13T16:11:58.9675888	Models
+// 1.19.2	2022-12-25T15:36:53.1212898	Models
 119fdaf6dc14a526be8fb5b57bf53c764c03e736 assets\origin_items\blockstates\hard_air.json
+e4e2f6f92709f90dbdd3bef113a2c4822132e6e7 assets\origin_items\models\item\deepslate_crafting_ore.json
 8931005a2f45f90135fcc4ff2c213801dda29447 assets\origin_items\models\item\hard_air.json
+eae329c46ff6e8112817e14871791e72154f1330 assets\origin_items\blockstates\deepslate_crafting_ore.json
 eb11ec1aa8d54b1d6dbb62d2d9195626647d914b assets\origin_items\models\block\hard_air.json
+5c8b325080849a3239913d1fe58903b9dba441b1 assets\origin_items\blockstates\crafting_ore.json
+c8adcb500aac3ab09e6f4c860bb6112dc00135b9 assets\origin_items\models\item\crafting_ore.json
+887c69eb453c2e7cbe37d9169010b330fdec5964 assets\origin_items\models\block\deepslate_crafting_ore.json
+f5ca3d61e0db763ee93134111d7f6c3ccbc4352c assets\origin_items\models\block\crafting_ore.json

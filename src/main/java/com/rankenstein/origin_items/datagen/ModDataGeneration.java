@@ -21,6 +21,8 @@ public class ModDataGeneration implements DataGeneratorEntrypoint {
         @Override
         public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
             blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HARD_AIR);
+            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRAFTING_ORE);
+            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_CRAFTING_ORE);
         }
 
         @Override
