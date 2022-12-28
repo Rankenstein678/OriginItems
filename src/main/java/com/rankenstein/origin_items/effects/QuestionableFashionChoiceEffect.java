@@ -1,5 +1,6 @@
 package com.rankenstein.origin_items.effects;
 
+import com.rankenstein.origin_items.OriginItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -18,9 +19,9 @@ public class QuestionableFashionChoiceEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        List<Entity> es = entity.getWorld().getOtherEntities(entity, new Box(entity.getX() - 3.0, entity.getY() - 3.0, entity.getZ() - 3.0, entity.getX() + 3.0, entity.getY() + 3.0, entity.getZ() + 3.0), Entity::isPlayer);
+        List<Entity> es = entity.getWorld().getOtherEntities(entity, new Box(entity.getX() - OriginItems.CONFIG.earsRange(), entity.getY() - OriginItems.CONFIG.earsRange(), entity.getZ() - OriginItems.CONFIG.earsRange(), entity.getX() + OriginItems.CONFIG.earsRange(), entity.getY() + OriginItems.CONFIG.earsRange(), entity.getZ() + OriginItems.CONFIG.earsRange()), Entity::isPlayer);
         es.stream().map(e -> (PlayerEntity) e)
-                .forEach(e -> e.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 100, 0)));
+                .forEach(e -> e.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, OriginItems.CONFIG.earsNauseaDurationSeconds(), 0)));
         super.applyUpdateEffect(entity, amplifier);
     }
 

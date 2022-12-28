@@ -1,5 +1,6 @@
 package com.rankenstein.origin_items.items.custom;
 
+import com.rankenstein.origin_items.OriginItems;
 import com.rankenstein.origin_items.effects.ModEffects;
 import com.rankenstein.origin_items.util.Constants;
 import com.rankenstein.origin_items.util.OriginUtils;
@@ -21,7 +22,7 @@ public class ArrowBreakerItem extends Item {
         if (!OriginUtils.checkOrigin(Constants.ENDERIAN, world, user)) {
             return TypedActionResult.fail(user.getStackInHand(hand));
         }
-        user.addStatusEffect(new StatusEffectInstance(ModEffects.ENDER_REFLEXES, 2400, 1));
+        user.addStatusEffect(new StatusEffectInstance(ModEffects.ENDER_REFLEXES, OriginItems.CONFIG.enderReflexesDurationSeconds()*20, 1));
         user.getStackInHand(hand).damage(1, user, e -> e.sendToolBreakStatus(hand));
         return TypedActionResult.success(user.getStackInHand(hand));
     }

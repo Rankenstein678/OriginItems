@@ -1,6 +1,7 @@
 package com.rankenstein.origin_items.items.custom;
 
 import com.google.common.collect.Lists;
+import com.rankenstein.origin_items.OriginItems;
 import com.rankenstein.origin_items.entities.PlayerSpeedBasedArrow;
 import com.rankenstein.origin_items.util.Constants;
 import com.rankenstein.origin_items.util.OriginUtils;
@@ -84,7 +85,7 @@ public class WingPiercerItem extends CrossbowItem {
     }
 
     public static int getPullTime() {
-        return 15;
+        return (int) (OriginItems.CONFIG.wingPiercerPullTimeSeconds()*20);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.rankenstein.origin_items.entities;
 
+import com.rankenstein.origin_items.OriginItems;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -32,7 +33,7 @@ public class PlayerSpeedBasedArrow extends ArrowEntity {
         Entity target = entityHitResult.getEntity();
         int damage;
         if ((getOwner() instanceof PlayerEntity)) {
-            damage = (int) Math.round(playerSpeed * DMG_MULT * getVelocity().length());
+            damage = (int) Math.round(playerSpeed * OriginItems.CONFIG.wingPiercerPlayerSpeedDamageMultiplier() * getVelocity().length());
 
         } else {
             float f = (float) this.getVelocity().length();

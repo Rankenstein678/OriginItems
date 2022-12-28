@@ -1,8 +1,34 @@
 {
+  "origin_items.wrong_origin": "You're unable to understand this item. Maybe %s could.",
+
   "misc.origin_items.description": "Press Shift for more info",
   "misc.origin_items.flavor": "Press Ctrl for lore details",
 
   "flavor.origin_items.wing_piercer": "Once used by Elytrians to shoot their winged enemies out of the sky, this antique one-handed Weapon design has also proven fairly effective against flightless foes.",
   "description.origin_items.wing_piercer": "Harnesses the speed of the wielder against it's target. It's reload time has been improved to benefit an aerial combat style.",
-  "info.origin_items.air_sigill": "%d seconds remaining"
+  "info.origin_items.air_sigill": "%d seconds remaining",
+
+  "text.config.origin_items_config.title": "Origin Items",
+  "text.config.origin_items_config.section.airSigill": "Air Sigill",
+  "text.config.origin_items_config.option.airSigillUseTimeSeconds": "Use time in seconds",
+  "text.config.origin_items_config.section.arrowBreaker": "Arrow Breaker",
+  "text.config.origin_items_config.option.enderReflexesDurationSeconds": "Effect duration in seconds",
+  "text.config.origin_items_config.section.blazingMolotov": "Blazing Molotov",
+  "text.config.origin_items_config.option.blazingMolotovRadius": "Molotov radius",
+  "text.config.origin_items_config.section.ears": "Feline Ears",
+  "text.config.origin_items_config.option.earsRange": "Effect-range",
+  "text.config.origin_items_config.option.earsNauseaDurationSeconds": "Effect duration",
+  "text.config.origin_items_config.option.earsDurability": "Durability",
+  "text.config.origin_items_config.section.shulkerCannon": "Shulker Cannon",
+  "text.config.origin_items_config.option.shulkerCannonRange": "Range",
+  "text.config.origin_items_config.option.shulkerCannonCooldownHitSeconds": "Cooldown on hit in seconds",
+  "text.config.origin_items_config.option.shulkerCannonCooldownMissSeconds": "Cooldown on miss in seconds",
+  "text.config.origin_items_config.section.spiderFangs": "Spider Fangs",
+  "text.config.origin_items_config.option.spiderFangsPoisonDuration": "Poison duration",
+  "text.config.origin_items_config.option.spiderFangsDashDamage": "Additional damage while dashing",
+  "text.config.origin_items_config.option.spiderFangsDamage": "Base damage",
+  "text.config.origin_items_config.option.spiderFangsDurability": "Durability",
+  "text.config.origin_items_config.section.wingPiercer": "Wing Piercer",
+  "text.config.origin_items_config.option.wingPiercerPullTimeSeconds": "Pull time in seconds",
+  "text.config.origin_items_config.option.wingPiercerPlayerSpeedDamageMultiplier": "Player speed damage multiplier"
 }

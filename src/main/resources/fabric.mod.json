@@ -3,10 +3,10 @@
   "id": "origin_items",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Origin Items",
+  "description": "A few items to expand on the Origins Mod",
   "authors": [
-    "Me!"
+    "Rankenstein"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -14,7 +14,7 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/origin_items/icon.png",
 
   "environment": "*",
   "entrypoints": {

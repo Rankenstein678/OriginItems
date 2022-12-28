@@ -1,5 +1,6 @@
 package com.rankenstein.origin_items.items.custom;
 
+import com.rankenstein.origin_items.OriginItems;
 import com.rankenstein.origin_items.util.Constants;
 import com.rankenstein.origin_items.util.OriginUtils;
 import net.minecraft.block.Block;
@@ -79,10 +80,11 @@ public class BlazingMolotovItem extends Item {
 
 
                 private void lightArea(BlockPos center, int yOffset) {
-                    for (int x = -RANGE; x < RANGE; x++) {
-                        for (int z = -RANGE; z < RANGE; z++) {
+                    int TEMPORARYRANGE = OriginItems.CONFIG.blazingMolotovRadius();
+                    for (int x = -TEMPORARYRANGE; x < TEMPORARYRANGE; x++) {
+                        for (int z = -TEMPORARYRANGE; z < TEMPORARYRANGE; z++) {
                             BlockPos pos = center.add(x, yOffset, z);
-                            if (center.getSquaredDistance(pos) > RANGE) continue;
+                            if (center.getSquaredDistance(pos) > TEMPORARYRANGE) continue;
                             BlockState blockState = world.getBlockState(pos);
                             if (DESTROYS.contains(blockState.getMaterial())) {
                                 world.setBlockState(pos, Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);

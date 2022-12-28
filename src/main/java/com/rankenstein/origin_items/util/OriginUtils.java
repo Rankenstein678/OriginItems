@@ -9,6 +9,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class OriginUtils {
     public static Identifier getOriginId(PlayerEntity player) {
         return Origin.get(player).get(OriginLayers.
@@ -25,7 +28,12 @@ public class OriginUtils {
             if (world.isClient()) {
                 user.playSound(SoundEvents.BLOCK_DISPENSER_FAIL, SoundCategory.PLAYERS, 1.0f, 1.0f);
             }
-            user.sendMessage(Text.translatable("origin_items.wrong_origin"), true);
+            String name = origin.split(":")[1].substring(0, 1).toUpperCase() + origin.split(":")[1].substring(1);
+            List<Character> vocals = Arrays.asList('A', 'E', 'I', 'O', 'U');
+            if (vocals.contains(name.toCharArray()[0])) {
+                name = "an " + name;
+            } else name = "a " + name;
+            user.sendMessage(Text.translatable("origin_items.wrong_origin", name), true);
             return false;
         }
         return true;

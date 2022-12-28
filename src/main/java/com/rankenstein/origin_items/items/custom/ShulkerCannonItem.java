@@ -1,5 +1,6 @@
 package com.rankenstein.origin_items.items.custom;
 
+import com.rankenstein.origin_items.OriginItems;
 import com.rankenstein.origin_items.util.Constants;
 import com.rankenstein.origin_items.util.OriginUtils;
 import net.minecraft.entity.Entity;
@@ -39,13 +40,13 @@ public class ShulkerCannonItem extends Item {
                 if (!world.isClient) {
                     world.spawnEntity(new ShulkerBulletEntity(world, user, target, null));
                     user.playSound(SoundEvents.ENTITY_SHULKER_SHOOT, SoundCategory.PLAYERS, 2.0f, world.getRandom().nextFloat() - world.getRandom().nextFloat() * 0.2f + 1.0f);
-                    user.getItemCooldownManager().set(this, COOLDOWN_HIT);
+                    user.getItemCooldownManager().set(this, (int)OriginItems.CONFIG.shulkerCannonCooldownHitSeconds()*20);
                 }
             } else {
                 if (world.isClient) {
                     user.playSound(SoundEvents.BLOCK_DISPENSER_FAIL, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 }
-                user.getItemCooldownManager().set(this, COOLDOWN_MISS);
+                user.getItemCooldownManager().set(this, (int)OriginItems.CONFIG.shulkerCannonCooldownMissSeconds()*20);
             }
         }
         return super.use(world, user, hand);
@@ -55,7 +56,7 @@ public class ShulkerCannonItem extends Item {
 
         Vec3d origin = new Vec3d(source.getX(), source.getEyeY(), source.getZ());
         Vec3d direction = source.getRotationVec(1);
-        Vec3d target = origin.add(direction.multiply(REACH));
+        Vec3d target = origin.add(direction.multiply(OriginItems.CONFIG.shulkerCannonRange()));
 
         Vec3d ray = target.subtract(origin);
         Box box = source.getBoundingBox().stretch(ray).expand(1.0D, 1.0D, 1.0D);

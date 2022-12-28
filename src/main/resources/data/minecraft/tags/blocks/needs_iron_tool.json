@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "origin_items:deepslate_crafting_ore",
+    "origin_items:crafting_ore"
+  ]
+}

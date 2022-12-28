@@ -70,4 +70,6 @@ public class AirSigillItem extends Item {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable("info.origin_items.air_sigill", (stack.getMaxDamage() - stack.getDamage()) / 20));
     }
+
+
 }

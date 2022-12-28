@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "origin_items:item/blazing_molotov_item"
+  }
+}
