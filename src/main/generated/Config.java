@@ -20,6 +20,7 @@ public class Config extends ConfigWrapper<com.rankenstein.origin_items.config.Co
     private final Option<java.lang.Double> shulkerCannonCooldownHitSeconds = this.optionForKey(new Option.Key("shulkerCannonCooldownHitSeconds"));
     private final Option<java.lang.Double> shulkerCannonCooldownMissSeconds = this.optionForKey(new Option.Key("shulkerCannonCooldownMissSeconds"));
     private final Option<java.lang.Integer> spiderFangsDamage = this.optionForKey(new Option.Key("spiderFangsDamage"));
+    private final Option<java.lang.Float> spiderFangsAttackSpeed = this.optionForKey(new Option.Key("spiderFangsAttackSpeed"));
     private final Option<java.lang.Integer> spiderFangsDurability = this.optionForKey(new Option.Key("spiderFangsDurability"));
     private final Option<java.lang.Double> spiderFangsPoisonDuration = this.optionForKey(new Option.Key("spiderFangsPoisonDuration"));
     private final Option<java.lang.Integer> spiderFangsDashDamage = this.optionForKey(new Option.Key("spiderFangsDashDamage"));
@@ -114,6 +115,14 @@ public class Config extends ConfigWrapper<com.rankenstein.origin_items.config.Co
 
     public void spiderFangsDamage(int value) {
         spiderFangsDamage.set(value);
+    }
+
+    public float spiderFangsAttackSpeed() {
+        return spiderFangsAttackSpeed.value();
+    }
+
+    public void spiderFangsAttackSpeed(float value) {
+        spiderFangsAttackSpeed.set(value);
     }
 
     public int spiderFangsDurability() {

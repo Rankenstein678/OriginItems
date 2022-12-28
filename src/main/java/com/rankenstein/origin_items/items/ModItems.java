@@ -44,7 +44,7 @@ public class ModItems {
     public static final Item SHULKER_CANNON = registerItem("shulker_cannon",
             new ShulkerCannonItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1)));
     public static final Item SPIDER_FANGS = registerItem("spider_fangs",
-            new SpiderFangItem(OriginItems.CONFIG.spiderFangsDamage(), 0.5F, new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1)));
+            new SpiderFangItem(OriginItems.CONFIG.spiderFangsDamage()-1, OriginItems.CONFIG.spiderFangsAttackSpeed()-4F, new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1)));
     public static final Item WING_PIERCER = registerItem("wing_piercer",
             new WingPiercerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(465)));
 

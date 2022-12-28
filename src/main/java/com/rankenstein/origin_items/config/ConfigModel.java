@@ -24,12 +24,13 @@ public class ConfigModel {
     public int earsNauseaDurationSeconds = 5;
     @SectionHeader("shulkerCannon")
     public double shulkerCannonRange = 20;
-    public double shulkerCannonCooldownHitSeconds = 20;
-    public double shulkerCannonCooldownMissSeconds = 5;
+    public double shulkerCannonCooldownHitSeconds = 2;
+    public double shulkerCannonCooldownMissSeconds = .5;
     @SectionHeader("spiderFangs")
     public int spiderFangsDamage = 5;
+    public float spiderFangsAttackSpeed = 1.2F;
     public int spiderFangsDurability = 5;
-    public double spiderFangsPoisonDuration = 0.5;
+    public double spiderFangsPoisonDuration = 10;
     public int spiderFangsDashDamage = 5;
     @SectionHeader("wingPiercer")
     public double wingPiercerPullTimeSeconds = 0.75;

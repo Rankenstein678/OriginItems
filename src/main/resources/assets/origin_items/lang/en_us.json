@@ -24,10 +24,11 @@
   "text.config.origin_items_config.option.shulkerCannonCooldownHitSeconds": "Cooldown on hit in seconds",
   "text.config.origin_items_config.option.shulkerCannonCooldownMissSeconds": "Cooldown on miss in seconds",
   "text.config.origin_items_config.section.spiderFangs": "Spider Fangs",
-  "text.config.origin_items_config.option.spiderFangsPoisonDuration": "Poison duration",
-  "text.config.origin_items_config.option.spiderFangsDashDamage": "Additional damage while dashing",
   "text.config.origin_items_config.option.spiderFangsDamage": "Base damage",
   "text.config.origin_items_config.option.spiderFangsDurability": "Durability",
+  "text.config.origin_items_config.option.spiderFangsAttackSpeed": "Attack Speed",
+  "text.config.origin_items_config.option.spiderFangsPoisonDuration": "Poison duration in seconds",
+  "text.config.origin_items_config.option.spiderFangsDashDamage": "Additional damage while dashing",
   "text.config.origin_items_config.section.wingPiercer": "Wing Piercer",
   "text.config.origin_items_config.option.wingPiercerPullTimeSeconds": "Pull time in seconds",
   "text.config.origin_items_config.option.wingPiercerPlayerSpeedDamageMultiplier": "Player speed damage multiplier"

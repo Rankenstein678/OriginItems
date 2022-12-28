@@ -22,8 +22,9 @@ public class ArrowBreakerItem extends Item {
         if (!OriginUtils.checkOrigin(Constants.ENDERIAN, world, user)) {
             return TypedActionResult.fail(user.getStackInHand(hand));
         }
-        user.addStatusEffect(new StatusEffectInstance(ModEffects.ENDER_REFLEXES, OriginItems.CONFIG.enderReflexesDurationSeconds()*20, 1));
+        user.addStatusEffect(new StatusEffectInstance(ModEffects.ENDER_REFLEXES, OriginItems.CONFIG.enderReflexesDurationSeconds()*20));
         user.getStackInHand(hand).damage(1, user, e -> e.sendToolBreakStatus(hand));
+        user.getItemCooldownManager().set(this,60);
         return TypedActionResult.success(user.getStackInHand(hand));
     }
 }
