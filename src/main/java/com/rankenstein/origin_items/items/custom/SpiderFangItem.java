@@ -1,5 +1,6 @@
 package com.rankenstein.origin_items.items.custom;
 
+import com.rankenstein.origin_items.OriginItems;
 import com.rankenstein.origin_items.items.EmptyToolMaterial;
 import com.rankenstein.origin_items.util.Constants;
 import com.rankenstein.origin_items.util.OriginUtils;
@@ -61,9 +62,9 @@ public class SpiderFangItem extends SwordItem {
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if(stack.hasNbt()&&stack.getNbt().getBoolean(NBT_KEY_JUMP)) {
-            target.damage(DamageSource.mob(attacker),5);
+            target.damage(DamageSource.mob(attacker), OriginItems.CONFIG.spiderFangsDashDamage());
         }
-        target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON,5));
+        target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON,(int)OriginItems.CONFIG.spiderFangsPoisonDuration()*20));
 
         return super.postHit(stack, target, attacker);
     }
