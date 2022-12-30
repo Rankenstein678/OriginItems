@@ -18,6 +18,7 @@ public class ConfigModel {
     public int enderReflexesDurationSeconds = 120;
     @SectionHeader("blazingMolotov")
     public int blazingMolotovRadius = 5;
+    public int blazingMolotovExplosionRadius = 2;
     @SectionHeader("ears")
     public double earsRange = 3;
     public int earsDurability = 25;

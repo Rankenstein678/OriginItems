@@ -22,50 +22,59 @@ import net.minecraft.world.World;
 public class SpiderFangItem extends SwordItem {
 
     private static final String NBT_KEY_JUMP = "origin_items.jump";
+    private static final float ADDITIONAL_DAMAGE = OriginItems.CONFIG.spiderFangsDashDamage();
+    private static final int DURATION = (int) OriginItems.CONFIG.spiderFangsPoisonDuration() * 20;
 
     public SpiderFangItem(int attackDamage, float attackSpeed, Settings settings) {
         super(new EmptyToolMaterial(), attackDamage, attackSpeed, settings);
     }
 
 
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        float f = user.getYaw();
-        float g = user.getPitch();
-        float h = -MathHelper.sin(f * (float) (Math.PI / 180.0)) * MathHelper.cos(g * (float) (Math.PI / 180.0));
-        float k = -MathHelper.sin(g * (float) (Math.PI / 180.0));
-        float l = MathHelper.cos(f * (float) (Math.PI / 180.0)) * MathHelper.cos(g * (float) (Math.PI / 180.0));
-        float m = MathHelper.sqrt(h * h + k * k + l * l);
-        float n = 3.0F * ((1.0F + 1) / 4.0F);
-        h *= n / m;
-        k *= n / m;
-        l *= n / m;
-        user.addVelocity(h, k+0.5F, l);
-        if(!user.getStackInHand(hand).hasNbt()) user.getStackInHand(hand).setNbt(new NbtCompound());
-        user.getStackInHand(hand).getNbt().putBoolean(NBT_KEY_JUMP,true);
-        user.getItemCooldownManager().set(this, 40);
-        return TypedActionResult.success(user.getStackInHand(hand));
+        ItemStack stack = user.getStackInHand(hand);
+        if (!stack.hasNbt()) stack.setNbt(new NbtCompound());
+        if (!stack.getNbt().getBoolean(NBT_KEY_JUMP)) {
+            float f = user.getYaw();
+            float g = user.getPitch();
+            float h = -MathHelper.sin(f * (float) (Math.PI / 180.0)) * MathHelper.cos(g * (float) (Math.PI / 180.0));
+            float k = -MathHelper.sin(g * (float) (Math.PI / 180.0));
+            float l = MathHelper.cos(f * (float) (Math.PI / 180.0)) * MathHelper.cos(g * (float) (Math.PI / 180.0));
+            float m = MathHelper.sqrt(h * h + k * k + l * l);
+            float n = 3.0F * ((1.0F + 1) / 4.0F);
+            h *= n / m;
+            k *= n / m;
+            l *= n / m;
+            user.addVelocity(h, k + 0.5F, l);
+            user.getStackInHand(hand).getNbt().putBoolean(NBT_KEY_JUMP, true);
+            user.getItemCooldownManager().set(this, 40);
+            return TypedActionResult.success(stack);
+        }
+        return TypedActionResult.fail(stack);
+
     }
+
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if(selected && entity instanceof PlayerEntity player&&!OriginUtils.isOfOrigin(player, Constants.ARACHNID)) {
-            player.dropItem(stack,false,false);
+        if (selected && entity instanceof PlayerEntity player && !OriginUtils.isOfOrigin(player, Constants.ARACHNID)) {
+            player.dropItem(stack, false, false);
             player.getInventory().removeStack(slot);
         }
-        if(stack.hasNbt()&&stack.getNbt().getBoolean(NBT_KEY_JUMP)&&entity.isOnGround()) {
-            stack.getNbt().putBoolean(NBT_KEY_JUMP,false);
+        if (stack.hasNbt() && stack.getNbt().getBoolean(NBT_KEY_JUMP) && entity.isOnGround()) {
+            stack.getNbt().putBoolean(NBT_KEY_JUMP, false);
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if(stack.hasNbt()&&stack.getNbt().getBoolean(NBT_KEY_JUMP)) {
-            target.damage(DamageSource.mob(attacker), OriginItems.CONFIG.spiderFangsDashDamage());
+        if (stack.hasNbt() && stack.getNbt().getBoolean(NBT_KEY_JUMP)) {
+            target.damage(DamageSource.mob(attacker), ADDITIONAL_DAMAGE);
         }
-        target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON,(int)OriginItems.CONFIG.spiderFangsPoisonDuration()*20));
+        target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, DURATION));
 
         return super.postHit(stack, target, attacker);
     }
+
+
 }

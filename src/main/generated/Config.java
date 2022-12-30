@@ -13,6 +13,7 @@ public class Config extends ConfigWrapper<com.rankenstein.origin_items.config.Co
     private final Option<java.lang.Integer> airSigillUseTimeSeconds = this.optionForKey(new Option.Key("airSigillUseTimeSeconds"));
     private final Option<java.lang.Integer> enderReflexesDurationSeconds = this.optionForKey(new Option.Key("enderReflexesDurationSeconds"));
     private final Option<java.lang.Integer> blazingMolotovRadius = this.optionForKey(new Option.Key("blazingMolotovRadius"));
+    private final Option<java.lang.Integer> blazingMolotovExplosionRadius = this.optionForKey(new Option.Key("blazingMolotovExplosionRadius"));
     private final Option<java.lang.Double> earsRange = this.optionForKey(new Option.Key("earsRange"));
     private final Option<java.lang.Integer> earsDurability = this.optionForKey(new Option.Key("earsDurability"));
     private final Option<java.lang.Integer> earsNauseaDurationSeconds = this.optionForKey(new Option.Key("earsNauseaDurationSeconds"));
@@ -59,6 +60,14 @@ public class Config extends ConfigWrapper<com.rankenstein.origin_items.config.Co
 
     public void blazingMolotovRadius(int value) {
         blazingMolotovRadius.set(value);
+    }
+
+    public int blazingMolotovExplosionRadius() {
+        return blazingMolotovExplosionRadius.value();
+    }
+
+    public void blazingMolotovExplosionRadius(int value) {
+        blazingMolotovExplosionRadius.set(value);
     }
 
     public double earsRange() {

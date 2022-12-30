@@ -41,7 +41,7 @@ public class EarItem extends ArmorItem implements IAnimatable {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (!world.isClient && entity instanceof PlayerEntity player && stack == player.getInventory().getArmorStack(3)) {
             if (OriginUtils.isOfOrigin(player, Constants.FELINE)) {
-                player.addStatusEffect(new StatusEffectInstance(ModEffects.QUESTIONABLE_FASHION_CHOICE, 200, 0));
+                player.addStatusEffect(new StatusEffectInstance(ModEffects.QUESTIONABLE_FASHION_CHOICE, 200, 0,false,false,true));
             } else {
                 int emptySlot = player.getInventory().getEmptySlot();
                 if(emptySlot != -1) {

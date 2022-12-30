@@ -13,6 +13,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class ArrowBreakerItem extends Item {
+    private static final int DURATION = OriginItems.CONFIG.enderReflexesDurationSeconds()*20;
     public ArrowBreakerItem(Settings settings) {
         super(settings);
     }
@@ -22,7 +23,7 @@ public class ArrowBreakerItem extends Item {
         if (!OriginUtils.checkOrigin(Constants.ENDERIAN, world, user)) {
             return TypedActionResult.fail(user.getStackInHand(hand));
         }
-        user.addStatusEffect(new StatusEffectInstance(ModEffects.ENDER_REFLEXES, OriginItems.CONFIG.enderReflexesDurationSeconds()*20));
+        user.addStatusEffect(new StatusEffectInstance(ModEffects.ENDER_REFLEXES, DURATION));
         user.getStackInHand(hand).damage(1, user, e -> e.sendToolBreakStatus(hand));
         user.getItemCooldownManager().set(this,60);
         return TypedActionResult.success(user.getStackInHand(hand));

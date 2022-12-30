@@ -42,6 +42,7 @@ public class AirSigillItem extends Item {
             user.setStatusEffect(new StatusEffectInstance(ModEffects.AIR_WALKING, stack.getMaxDamage() - stack.getDamage()), user);
             stack.getNbt().putBoolean(NBT_KEY_ACTIVE, true);
         }
+        user.getItemCooldownManager().set(this, 100);
         return TypedActionResult.success(user.getStackInHand(hand));
     }
 
@@ -53,13 +54,13 @@ public class AirSigillItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if(!world.isClient) {
+        if (!world.isClient) {
             if (entity instanceof PlayerEntity player && stack.getNbt().getBoolean(NBT_KEY_ACTIVE)) {
-                if(selected || player.getStackInHand(Hand.OFF_HAND).equals(stack)) {
-                    stack.damage(1, player, p -> p.sendToolBreakStatus(selected? Hand.MAIN_HAND:Hand.OFF_HAND));//selected ? Hand.MAIN_HAND : Hand.OFF_HAND));
+                if (selected || player.getStackInHand(Hand.OFF_HAND).equals(stack)) {
+                    stack.damage(1, player, p -> p.sendToolBreakStatus(selected ? Hand.MAIN_HAND : Hand.OFF_HAND));//selected ? Hand.MAIN_HAND : Hand.OFF_HAND));
                 } else {
                     player.removeStatusEffect(ModEffects.AIR_WALKING);
-                    stack.getNbt().putBoolean(NBT_KEY_ACTIVE,false);
+                    stack.getNbt().putBoolean(NBT_KEY_ACTIVE, false);
                 }
             }
         }

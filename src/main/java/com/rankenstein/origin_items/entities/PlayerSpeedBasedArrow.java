@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class PlayerSpeedBasedArrow extends ArrowEntity {
-    private static final int DMG_MULT = 5;
+    private static final double DMG_MULT = OriginItems.CONFIG.wingPiercerPlayerSpeedDamageMultiplier();
     private final double playerSpeed;
 
     public PlayerSpeedBasedArrow(World world, LivingEntity owner, double playerSpeed) {
@@ -33,7 +33,7 @@ public class PlayerSpeedBasedArrow extends ArrowEntity {
         Entity target = entityHitResult.getEntity();
         int damage;
         if ((getOwner() instanceof PlayerEntity)) {
-            damage = (int) Math.round(playerSpeed * OriginItems.CONFIG.wingPiercerPlayerSpeedDamageMultiplier() * getVelocity().length());
+            damage = (int) Math.round(playerSpeed * DMG_MULT * getVelocity().length());
 
         } else {
             float f = (float) this.getVelocity().length();

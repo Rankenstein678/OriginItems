@@ -19,9 +19,9 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import net.minecraft.world.explosion.Explosion;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,8 +31,10 @@ public class BlazingMolotovItem extends Item {
         super(settings);
     }
 
-    public static final int RANGE = 5;
-    public static final List<Material> DESTROYS = Arrays.asList(Material.AIR, Material.REPLACEABLE_PLANT);
+    private static final int RADIUS = OriginItems.CONFIG.blazingMolotovRadius();
+    private static final float EXPLOSION_STRENGTH = OriginItems.CONFIG.blazingMolotovExplosionRadius();
+
+    private static final List<Material> DESTROYS = Arrays.asList(Material.AIR, Material.REPLACEABLE_PLANT);
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
@@ -46,56 +48,48 @@ public class BlazingMolotovItem extends Item {
 
                 @Override
                 protected void onCollision(HitResult hitResult) {
-                    HitResult.Type type = hitResult.getType();
-                    if (type == HitResult.Type.ENTITY) {
-                        Entity entity = ((EntityHitResult) hitResult).getEntity();
-                        entity.setOnFireFor(10);
-                        lightArea(entity.getSteppingPos(), 1);
+                    if(!world.isClient) {
+                        HitResult.Type type = hitResult.getType();
+                        if (type == HitResult.Type.ENTITY) {
+                            Entity entity = ((EntityHitResult) hitResult).getEntity();
+                            entity.setOnFireFor(10);
+                            this.world.createExplosion(null, getPos().getX(), getPos().getY(), getPos().getZ(), EXPLOSION_STRENGTH, Explosion.DestructionType.NONE);
+                            lightArea(entity.getSteppingPos());
+                            this.world.emitGameEvent(GameEvent.PROJECTILE_LAND, hitResult.getPos(), GameEvent.Emitter.of(this, null));
+                        } else if (type == HitResult.Type.BLOCK) {
+                            BlockHitResult blockHitResult = (BlockHitResult) hitResult;
+                            BlockPos blockPos = blockHitResult.getBlockPos();
+                            this.world.createExplosion(null, blockPos.getX(), blockPos.getY()+1, blockPos.getZ(), EXPLOSION_STRENGTH, Explosion.DestructionType.NONE);
 
-                        this.onEntityHit((EntityHitResult) hitResult);
-                        this.world.emitGameEvent(GameEvent.PROJECTILE_LAND, hitResult.getPos(), GameEvent.Emitter.of(this, null));
-                    } else if (type == HitResult.Type.BLOCK) {
-                        BlockHitResult blockHitResult = (BlockHitResult) hitResult;
-                        this.onBlockHit(blockHitResult);
-                        BlockPos blockPos = blockHitResult.getBlockPos();
-                        this.world.emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, this.world.getBlockState(blockPos)));
+                            lightArea(blockPos);
+                            this.world.emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, this.world.getBlockState(blockPos)));
+                        }
+
                     }
 
                     this.playSound(SoundEvents.ENTITY_SPLASH_POTION_BREAK, 0.5f, random.nextFloat() * 0.1f + 0.9f);
                     this.discard();
                 }
 
-                @Override
-                protected void onBlockHit(BlockHitResult blockHitResult) {
-                    BlockPos pos = blockHitResult.getBlockPos();
-                    Direction side = blockHitResult.getSide();
-                    if (side == Direction.UP) {
-                        lightArea(pos, 1);
-                    } else if (side == Direction.DOWN) {
-                        lightArea(pos, -1);
-                    } else {
-                        lightArea(pos, 0);
-                    }
-                }
 
-
-                private void lightArea(BlockPos center, int yOffset) {
-                    int TEMPORARYRANGE = OriginItems.CONFIG.blazingMolotovRadius();
-                    for (int x = -TEMPORARYRANGE; x < TEMPORARYRANGE; x++) {
-                        for (int z = -TEMPORARYRANGE; z < TEMPORARYRANGE; z++) {
-                            BlockPos pos = center.add(x, yOffset, z);
-                            if (center.getSquaredDistance(pos) > TEMPORARYRANGE) continue;
-                            BlockState blockState = world.getBlockState(pos);
-                            if (DESTROYS.contains(blockState.getMaterial())) {
-                                world.setBlockState(pos, Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+                private void lightArea(BlockPos center) {
+                    for (int y = 0; y < 3; y++) {
+                        for (int x = -RADIUS; x < RADIUS; x++) {
+                            for (int z = -RADIUS; z < RADIUS; z++) {
+                                BlockPos pos = center.add(x, y, z);
+                                if (Math.sqrt(center.getSquaredDistance(pos)) > RADIUS) continue;
+                                BlockState blockState = world.getBlockState(pos);
+                                if (DESTROYS.contains(blockState.getMaterial())) {
+                                    world.setBlockState(pos, Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD);
+                                }
                             }
                         }
+
                     }
                 }
             };
             potionEntity.setItem(itemStack);
-            //Todo: change Velocity?
-            potionEntity.setVelocity(user, user.getPitch(), user.getYaw(), -20.0f, 0.5f, 1.0f);
+            potionEntity.setVelocity(user, user.getPitch(), user.getYaw(), -20.0f, 0.75f, 1.0f);
             world.spawnEntity(potionEntity);
         }
         if (!user.getAbilities().creativeMode) {
