@@ -1,4 +1,6 @@
 {
+  "itemGroup.origin_items.origin_items": "Origin Items",
+
   "origin_items.wrong_origin": "You're unable to understand this item. Maybe %s could.",
 
   "misc.origin_items.description": "Press Shift for more info",
