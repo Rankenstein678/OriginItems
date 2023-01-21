@@ -100,6 +100,7 @@ public class BlazingMolotovItem extends Item {
         if (!user.getAbilities().creativeMode) {
             itemStack.decrement(1);
         }
+        user.getItemCooldownManager().set(this,20);
         return TypedActionResult.success(itemStack, world.isClient());
     }
 

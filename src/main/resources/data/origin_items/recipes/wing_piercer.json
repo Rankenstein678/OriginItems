@@ -1,29 +1,26 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " # ",
-    "SEP",
-    " / "
+    "gCg",
+    "CSC",
+    "gGg"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:iron_sword"
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:chain"
     },
     "S": {
-      "item": "minecraft:spider_eye"
+      "item": "minecraft:crossbow"
     },
-    "E": {
-      "item": "origin_items:crafting_item_arachnid"
-    },
-    "P": {
-      "item": "minecraft:poisonous_potato"
-    },
-    "/": {
-      "item": "minecraft:stick"
+    "G": {
+      "item": "origin_items:crafting_item_elytrian"
     }
   },
   "result": {
-    "item": "origin_items:spider_fangs",
+    "item": "origin_items:wing_piercer",
     "count": 1
   }
 }
