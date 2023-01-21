@@ -19,6 +19,7 @@ public class ConfigModel {
     @SectionHeader("blazingMolotov")
     public int blazingMolotovRadius = 5;
     public int blazingMolotovExplosionRadius = 2;
+    public int blazingMolotovCooldownSeconds = 1;
     @SectionHeader("ears")
     public double earsRange = 3;
     public int earsDurability = 25;

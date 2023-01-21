@@ -37,6 +37,7 @@ public class BlazingMolotovItem extends Item {
     }
 
     private static final int RADIUS = OriginItems.CONFIG.blazingMolotovRadius();
+    private static final int COOLDOWN = OriginItems.CONFIG.blazingMolotovCooldownSeconds()*20;
     private static final float EXPLOSION_STRENGTH = OriginItems.CONFIG.blazingMolotovExplosionRadius();
 
     private static final List<Material> DESTROYS = Arrays.asList(Material.AIR, Material.REPLACEABLE_PLANT);
@@ -100,7 +101,7 @@ public class BlazingMolotovItem extends Item {
         if (!user.getAbilities().creativeMode) {
             itemStack.decrement(1);
         }
-        user.getItemCooldownManager().set(this,20);
+        user.getItemCooldownManager().set(this, COOLDOWN);
         return TypedActionResult.success(itemStack, world.isClient());
     }
 
