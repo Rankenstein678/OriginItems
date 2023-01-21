@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "SEP",
+    " / "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_sword"
+    },
+    "S": {
+      "item": "minecraft:spider_eye"
+    },
+    "E": {
+      "item": "origin_items:crafting_item_arachnid"
+    },
+    "P": {
+      "item": "minecraft:poisonous_potato"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "origin_items:spider_fangs",
+    "count": 1
+  }
+}

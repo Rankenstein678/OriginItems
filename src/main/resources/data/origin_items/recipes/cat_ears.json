@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R R",
+    "S S",
+    "WCW"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "R": {
+      "item": "minecraft:rabbit_foot"
+    },
+    "C": {
+      "item": "origin_items:crafting_item_feline"
+    }
+  },
+  "result": {
+    "item": "origin_items:ears",
+    "count": 1
+  }
+}
+

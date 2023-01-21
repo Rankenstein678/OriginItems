@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "iC/",
+    "i# "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:shulker_shell"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "origin_items:crafting_item_shulk"
+    },
+    "/": {
+      "item": "minecraft:end_rod"
+    }
+  },
+  "result": {
+    "item": "origin_items:shulker_cannon",
+    "count": 1
+  }
+}

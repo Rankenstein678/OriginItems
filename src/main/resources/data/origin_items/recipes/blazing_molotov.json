@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#G#",
+    "#P#",
+    " C "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:blaze_powder"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "P": {
+      "item": "origin_items:crafting_item_blazeborn"
+    },
+    "C": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "result": {
+    "item": "origin_items:blazing_molotov",
+    "count": 1
+  }
+}
