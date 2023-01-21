@@ -13,9 +13,9 @@ import io.wispforest.owo.config.annotation.Sync;
 @Config(name = "origin_items_config", wrapperName = "Config")
 public class ConfigModel {
     @SectionHeader("airSigill")
-    public int airSigillUseTimeSeconds = 300;
+    public int airSigillUseTimeSeconds = 60;
     @SectionHeader("arrowBreaker")
-    public int enderReflexesDurationSeconds = 120;
+    public int enderReflexesDurationSeconds = 30;
     @SectionHeader("blazingMolotov")
     public int blazingMolotovRadius = 5;
     public int blazingMolotovExplosionRadius = 2;
