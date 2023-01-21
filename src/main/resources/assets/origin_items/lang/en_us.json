@@ -26,6 +26,10 @@
   "block.origin_items.deepslate_crafting_ore": "Deepslate Crafting Ore",
   "block.origin_items.hard_air": "Hard Air",
 
+  "effect.origin_items.air_walking": "Air Walking",
+  "effect.origin_items.ender_reflexes": "Ender Reflexes",
+  "effect.origin_items.questionable_fashion_choice": "Questionable Fashion Choice",
+
   "flavor.origin_items.air_sigill": "Your ancestors may have been beings of air but it seems that a brain needs at least some mass to function. While you will never fly freely like them this item allow you to use their power and compact the air under your feet. ",
   "flavor.origin_items.arrow_breaker": "This contraption pulls energy out of the endless void of the end and creates a protective layer around you. If it is pierced by an arrow, the energy is released and allows you to teleport away.",
   "flavor.origin_items.blazing_molotov": "This fiery liquid was once enjoyed as drink by your ancestors. While it is to hot to drink for you, it's volatile nature does make it a useful weapon.",
