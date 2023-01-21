@@ -72,10 +72,10 @@ public class ShulkerCannonItem extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("description.origin_items.shulker_cannon.json").formatted(Formatting.GOLD));
+            tooltip.add(Text.translatable("description.origin_items.shulker_cannon").formatted(Formatting.GOLD));
 
         } else if (Screen.hasControlDown()) {
-            tooltip.add(Text.translatable("flavor.origin_items.shulker_cannon.json").formatted(Formatting.GOLD));
+            tooltip.add(Text.translatable("flavor.origin_items.shulker_cannon").formatted(Formatting.GOLD));
         } else {
             tooltip.add(Text.translatable("misc.origin_items.description").formatted(Formatting.YELLOW));
             tooltip.add(Text.translatable("misc.origin_items.flavor").formatted(Formatting.AQUA));
