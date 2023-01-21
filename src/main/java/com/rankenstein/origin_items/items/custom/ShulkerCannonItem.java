@@ -3,6 +3,8 @@ package com.rankenstein.origin_items.items.custom;
 import com.rankenstein.origin_items.OriginItems;
 import com.rankenstein.origin_items.util.Constants;
 import com.rankenstein.origin_items.util.OriginUtils;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,12 +14,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ShulkerCannonItem extends Item {
     private static final int COOLDOWN_HIT = (int) OriginItems.CONFIG.shulkerCannonCooldownHitSeconds() * 20;
@@ -60,6 +67,19 @@ public class ShulkerCannonItem extends Item {
         Vec3d ray = target.subtract(origin);
         Box box = source.getBoundingBox().stretch(ray).expand(1.0D, 1.0D, 1.0D);
         return ProjectileUtil.raycast(source, origin, target, box, (entityx) -> !entityx.isSpectator(), ray.lengthSquared());
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.translatable("description.origin_items.shulker_cannon.json").formatted(Formatting.GOLD));
+
+        } else if (Screen.hasControlDown()) {
+            tooltip.add(Text.translatable("flavor.origin_items.shulker_cannon.json").formatted(Formatting.GOLD));
+        } else {
+            tooltip.add(Text.translatable("misc.origin_items.description").formatted(Formatting.YELLOW));
+            tooltip.add(Text.translatable("misc.origin_items.flavor").formatted(Formatting.AQUA));
+        }
     }
 
 }

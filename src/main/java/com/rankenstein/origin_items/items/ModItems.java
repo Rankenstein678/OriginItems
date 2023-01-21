@@ -16,29 +16,29 @@ public class ModItems {
     public static final Item AIR_SIGILL = registerItem("air_sigill",
             new AirSigillItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(OriginItems.CONFIG.airSigillUseTimeSeconds()*20)));
     public static final Item ARROW_BREAKER = registerItem("arrow_breaker",
-            new ArrowBreakerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(4)));
-    public static final Item BLAZING_MOLOTOV_ITEM = registerItem("blazing_molotov_item",
+            new ArrowBreakerItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(6)));
+    public static final Item BLAZING_MOLOTOV_ITEM = registerItem("blazing_molotov",
             new BlazingMolotovItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM = registerItem("crafting_item",
-            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItemEmpty(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_ARACHNID = registerItem("crafting_item_arachnid",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_AVIAN = registerItem("crafting_item_avian",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_BLAZEBORN = registerItem("crafting_item_blazeborn",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_ELYTRIAN = registerItem("crafting_item_elytrian",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_ENDERIAN = registerItem("crafting_item_enderian",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_FELINE = registerItem("crafting_item_feline",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_MERLING = registerItem("crafting_item_merling",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_PHANTOM = registerItem("crafting_item_phantom",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item CRAFTING_ITEM_SHULK = registerItem("crafting_item_shulk",
-            new Item(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
+            new CraftingItem(new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS)));
     public static final Item EARS = registerItem("ears",
             new EarItem(new EarArmorMaterial(), EquipmentSlot.HEAD, new FabricItemSettings().group(ModItemGroup.ORIGIN_ITEMS).maxCount(1).maxDamage(OriginItems.CONFIG.earsDurability())));
     public static final Item SHULKER_CANNON = registerItem("shulker_cannon",

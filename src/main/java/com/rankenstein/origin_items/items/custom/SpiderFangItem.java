@@ -4,6 +4,8 @@ import com.rankenstein.origin_items.OriginItems;
 import com.rankenstein.origin_items.items.EmptyToolMaterial;
 import com.rankenstein.origin_items.util.Constants;
 import com.rankenstein.origin_items.util.OriginUtils;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -13,10 +15,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 @SuppressWarnings("DataFlowIssue")
 public class SpiderFangItem extends SwordItem {
@@ -76,5 +83,17 @@ public class SpiderFangItem extends SwordItem {
         return super.postHit(stack, target, attacker);
     }
 
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.translatable("description.origin_items.spider_fangs").formatted(Formatting.GOLD));
+
+        } else if (Screen.hasControlDown()) {
+            tooltip.add(Text.translatable("flavor.origin_items.spider_fangs").formatted(Formatting.GOLD));
+        } else {
+            tooltip.add(Text.translatable("misc.origin_items.description").formatted(Formatting.YELLOW));
+            tooltip.add(Text.translatable("misc.origin_items.flavor").formatted(Formatting.AQUA));
+        }
+    }
 
 }
