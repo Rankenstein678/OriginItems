@@ -67,5 +67,6 @@
   "text.config.origin_items_config.section.shulkerCannon": "Shulker Cannon",
   "text.config.origin_items_config.section.spiderFangs": "Spider Fangs",
   "text.config.origin_items_config.section.wingPiercer": "Wing Piercer",
-  "text.config.origin_items_config.title": "Origin Items - changes require restart"
+  "text.config.origin_items_config.title": "Origin Items - changes require restart",
+  "text.config.origin_items_conifg.option.blazingMolotovCooldownSecond": "Molotov Cooldown in seconds"
 }
