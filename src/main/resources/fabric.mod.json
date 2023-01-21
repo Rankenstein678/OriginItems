@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Origin Items",
-  "description": "A few items to expand on the Origins Mod",
+  "description": "A few items made to expand on the Origins Mod",
   "authors": [
     "Rankenstein"
   ],
@@ -13,7 +13,7 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
 
-  "license": "CC0-1.0",
+  "license": "GPL-3.0-or-later",
   "icon": "assets/origin_items/icon.png",
 
   "environment": "*",
